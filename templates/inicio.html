@@ -2,6 +2,64 @@
 
 {% block content %}
 
-Prueba auth
+{% if user.is_authenticated %}
+<h1 class="text-center mt-5"> MIS EQUIPOS </h1>
+<div class="container m-2">
+    <div class="column">
+        <div class="row d-inline-block p-2 m-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ equipos.Tipo }} </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> ID: {{equipos.IdEquipo}} </li>
+                    <li class="list-group-item"> MARCA: {{equipos.Marca}} </li>
+                    <li class="list-group-item"> MODELO: {{equipos.Modelo}} </li>
+                    <li class="list-group-item"> FECHA RESERVA: {{reservas.FechaInicio}} </li>
+                    <li class="list-group-item"> DETALLE RESERVA: {{reservas.Detalle}} </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<h1 class="text-center mt-5"> MIS SOPORTES </h1>
+<div class="container m-2">
+    <div class="column">
+        <div class="row d-inline-block p-2 m-2">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> ID SOPORTE: {{soportes.IdSoporte}} </li>
+                    <li class="list-group-item"> ID EQUIPO: {{equipoSoporte.IdEquipo}} </li>
+                    <li class="list-group-item"> EQUIPO: {{equipoSoporte.Tipo}} </li>
+                    <li class="list-group-item"> MODELO: {{equipoSoporte.Modelo}} </li>
+                    <li class="list-group-item"> MARCA: {{equipoSoporte.Marca}} </li>
+                    <li class="list-group-item"> DETALLE SOPORTE: {{soportes.Detalle}} </li>
+                    <li class="list-group-item"> FECHA SOPORTE: {{soportes.FechaInicio}} </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% else %}
+
+<div class="card text-center m-5">
+    <div class="card-header">
+        <h5 class="card-title mt-2"> INICIAR SESIÓN </h5>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"> </h5>
+        <p class="card-text"> Para poder utilizar todas las funcionalidades de esta app debe autenticarse como usuario
+        </p>
+        <a href="signin/" class="btn btn-primary"> IR A AUTENTICACIÓN </a>
+    </div>
+</div>
+{% endif %}
+
+
 
 {% endblock %}

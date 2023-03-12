@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="text-center m-5"> LISTA DE EQUIPOS DISPONIBLES </h2>
+
+<div class="container m-2">
+    <div class="column">
+        {% for e in equipos %}
+        <div class="row d-inline-block p-2 m-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ e.Tipo }} </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> ID: {{e.IdEquipo}} </li>
+                    <li class="list-group-item"> MARCA: {{e.Marca}} </li>
+                    <li class="list-group-item"> MODELO: {{e.Modelo}} </li>
+                    <li class="list-group-item"> PRESTADO A: {{e.IdUsuario}} </li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container mb-5">
+    <h2 class="text-center m-5"> PESTAR UN EQUIPO </h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label"> ID del Equipo </label>
+            <input type="number" name="IdEquipo" class="form-control" id="formGroupExampleInput" placeholder="ID del equipo que desea prestar">
+          </div>
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label"> Detalles (Dirección y demás datos que considere importantes) </label>
+            <input type="text" name="Detalle" class="form-control" id="formGroupExampleInput2" placeholder="Detalles">
+          </div>
+          <button type="submit" class="btn btn-primary"> PRESTAR EQUIPO </button>
+    </form>
+</div>
+
+
+{% endblock %}
